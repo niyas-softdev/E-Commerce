@@ -57,6 +57,10 @@ function AppNavbar() {
             <Nav.Link href="/womens">Womens</Nav.Link>
             <Nav.Link href="/kids">Kids</Nav.Link>
             <Nav.Link href="/addItems">Add Items</Nav.Link>
+            <Nav.Link href="/userController">userControl</Nav.Link>
+            <Nav.Link href="/productController">ProductController</Nav.Link>
+            
+
           </Nav>
           <Nav className="d-flex gap-3">
             {userData?.id && (

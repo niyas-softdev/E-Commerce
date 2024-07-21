@@ -1,16 +1,19 @@
 import React from "react";
-import AppNavbar from "./Component/AppNavbar";
+import AppNavbar from "./Component/common/AppNavbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Mens from "./Component/Mens";
-import Womens from "./Component/Womens";
-import Kids from "./Component/Kids";
-import Login from "./Component/Login";
-import Signup from "./Component/Signup";
+import Mens from "./Component/Pages/Mens";
+import Womens from "./Component/Pages/Womens";
+import Kids from "./Component/Pages/Kids";
+import Login from "./Component/Pages/Login";
+import Signup from "./Component/Pages/Signup";
 import ProtectedRoute from "./Component/common/ProtectedRoute";
 import Footer from "./Component/common/Footer";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import AddItems from "./Component/AddItems";
-import Card from "./Component/card";
+import AddItems from "./Component/Pages/AddItems";
+import UserController from "./Component/Pages/userController";
+import UserUpdate from "./Component/Pages/userUpdate";
+import ProductController from "./Component/Pages/productController";
+import ProductUpdate from "./Component/Pages/productUpdate";
 
 function App() {
   return (
@@ -48,6 +51,38 @@ function App() {
             element={
               <ProtectedRoute>
                 <AddItems />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/userController"
+            element={
+              <ProtectedRoute>
+                <UserController />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/userUpdate"
+            element={
+              <ProtectedRoute>
+                <UserUpdate />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/productController"
+            element={
+              <ProtectedRoute>
+                <ProductController />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/productUpdate"
+            element={
+              <ProtectedRoute>
+                <ProductUpdate/>
               </ProtectedRoute>
             }
           />

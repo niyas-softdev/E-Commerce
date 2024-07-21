@@ -1,21 +1,20 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-require("dotenv").config();
+const passport = require("./src/config/passport-config");
+
 
 const mongoose = require("./src/config/db");
 
-const userController = require("./src/controller/userController");
-const productController = require("./src/controller/productController");
+const userRoute = require("./src/routes/userRoute");
+const productRoute = require("./src/routes/productRoute");
+const authRoute = require("./src/routes/authRoute");
 
 const app = express();
+app.use(bodyParser.json());
+app.use(passport.initialize());
 
-// app.use(
-//   cors({
-//     origin: ["http://localhost:5000", "http://localhost:3000"],
-//     credentials: true
-//   })
-// );
 
 app.use(
   cors({
@@ -24,9 +23,10 @@ app.use(
   })
 );
 
-app.use(bodyParser.json());
-app.use("/", userController);
-app.use("/", productController);
+
+app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
+app.use("/api/product", productRoute);
 
 const PORT = process.env.PORT;
 
